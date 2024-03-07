@@ -1,4 +1,3 @@
-
 import React from "react";
 import * as S from "./ButtonProps.Styled";
 import { IButtonProps } from "./ButtonProps.Styled";
@@ -19,7 +18,7 @@ const ButtonProps: React.FC<IButton> = ({
   $customColor,
   $customPadding,
   $customFontFamily,
-  $customBorderRadius
+  $customBorderRadius,
 }) => {
   return (
     <div>

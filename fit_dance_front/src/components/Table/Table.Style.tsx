@@ -6,7 +6,7 @@ export const Container = styled.div`
   margin: 0 auto;
   margin-top: 2%;
   margin-bottom: 5%;
-  padding: 10px;
+  padding: 35px;
   border-radius: 5px;
   background: #d9d7d7;
   overflow: auto;

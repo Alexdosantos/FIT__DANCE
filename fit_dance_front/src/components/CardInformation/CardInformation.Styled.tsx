@@ -6,7 +6,6 @@ export const Container = styled.div`
   margin: 0 auto;
   margin-top: 2%;
   justify-content: space-between;
-  
 `;
 
 export const DivList = styled.div`
@@ -25,7 +24,6 @@ export const DivNewUser = styled.div`
   padding: 2% 0.5% 0 0;
   background: #b3b2b2;
 `;
-
 
 export const ButtonList = styled.button`
   width: 20%;

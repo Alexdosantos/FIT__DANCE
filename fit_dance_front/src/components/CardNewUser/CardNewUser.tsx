@@ -45,61 +45,78 @@ const CardNewUser = () => {
   };
 
   return (
-    <S.Container>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <S.DivNameButton>
-          <S.DivInputName>
-            <S.TitleErro>{errors.name?.message}</S.TitleErro>
-            <S.LabelName htmlFor="">Nome</S.LabelName>
-            <S.InputName type="text" {...register("name")} />
-          </S.DivInputName>
-        </S.DivNameButton>
-        <S.DivInputEmail>
-          <S.TitleErro>{errors.email?.message}</S.TitleErro>
-          <S.LabelEmail htmlFor="">E-mail</S.LabelEmail>
-          <S.InputEmail type="text" {...register("email")} />
-        </S.DivInputEmail>
-        <div>
-          <S.DivInputCPFAndDate>
-            <S.DivInputCPF>
-              <S.TitleErro>{errors.cpf?.message}</S.TitleErro>
-              <S.LabelCPF htmlFor="">CPF</S.LabelCPF>
-              <S.InputCPF
-                mask="999.999.999-99"
-                {...register("cpf", { onChange: handleInputChange })}
-              />
-            </S.DivInputCPF>
-            <S.DivInputDate>
-              <S.TitleErro>{errors.birthDate?.message}</S.TitleErro>
-              <S.LabelDate htmlFor="">Data de Nascimento</S.LabelDate>
-              <S.InputDate type="date" {...register("birthDate")} />
-            </S.DivInputDate>
-          </S.DivInputCPFAndDate>
-          <S.DivInputNewPassWordAndButtons>
-            <S.DivInputNewPassWord>
-              <S.DivPassWord>
-                <S.TitleErro>{errors.password?.message}</S.TitleErro>
-                <PasswordInput register={register("password")} />
-              </S.DivPassWord>
-
-              <S.DivButtonSave>
-                <ButtonProps
-                  buttonName={isSubmitting ? "Salvando..." : "Salvar"}
-                  $customFontSize="1rem"
-                  $customBorder="none"
-                  $customBackground="green"
-                  $customColor="white"
-                  $customPadding="10px 50px"
-                  $customFontFamily="Montserrat"
-                  $customBorderRadius="2px"
-                  type="submit"
+    <>
+      <S.DivTitleNewUser>
+        <S.DivNewUser>
+          <S.DivTextNewUser>
+            <S.TextNewUser>Novo usuário</S.TextNewUser>
+          </S.DivTextNewUser>
+        </S.DivNewUser>
+      </S.DivTitleNewUser>
+      <S.Container>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <S.DivNameButton>
+            <S.DivInputName>
+              <S.TitleErro>{errors.name?.message}</S.TitleErro>
+              <S.LabelName htmlFor="">Nome</S.LabelName>
+              <S.InputName type="text" {...register("name")} />
+            </S.DivInputName>
+          </S.DivNameButton>
+          <S.DivInputEmail>
+            <S.TitleErro>{errors.email?.message}</S.TitleErro>
+            <S.LabelEmail htmlFor="">E-mail</S.LabelEmail>
+            <S.InputEmail type="text" {...register("email")} />
+          </S.DivInputEmail>
+          <div>
+            <S.DivInputCPFAndDate>
+              <S.DivInputCPF>
+                <S.TitleErro>{errors.cpf?.message}</S.TitleErro>
+                <S.LabelCPF htmlFor="">CPF</S.LabelCPF>
+                <S.InputCPF
+                  mask="999.999.999-99"
+                  {...register("cpf", { onChange: handleInputChange })}
                 />
-              </S.DivButtonSave>
-            </S.DivInputNewPassWord>
-          </S.DivInputNewPassWordAndButtons>
-        </div>
-      </form>
-    </S.Container>
+              </S.DivInputCPF>
+              <S.DivInputDate>
+                <S.TitleErro>{errors.birthDate?.message}</S.TitleErro>
+                <S.LabelDate htmlFor="">Data de Nascimento</S.LabelDate>
+                <S.InputDate type="date" {...register("birthDate")} />
+                {/* <ButtonDate
+                onChangeday={(e) => setDay(e.target.value)}
+                onChangeMonth={(e) => setMonth(e.target.value)}
+                onChanceYear={(e) => setYear(e.target.value)}
+                valueDay={day}
+                valueMonth={month}
+                valueYear={year}
+              /> */}
+              </S.DivInputDate>
+            </S.DivInputCPFAndDate>
+            <S.DivInputNewPassWordAndButtons>
+              <S.DivInputNewPassWord>
+                <S.DivPassWord>
+                  <S.TitleErro>{errors.password?.message}</S.TitleErro>
+                  <PasswordInput register={register("password")} />
+                </S.DivPassWord>
+
+                <S.DivButtonSave>
+                  <ButtonProps
+                    buttonName={isSubmitting ? "Salvando..." : "Salvar"}
+                    $customFontSize="1rem"
+                    $customBorder="none"
+                    $customBackground="green"
+                    $customColor="white"
+                    $customPadding="10px 50px"
+                    $customFontFamily="Montserrat"
+                    $customBorderRadius="2px"
+                    type="submit"
+                  />
+                </S.DivButtonSave>
+              </S.DivInputNewPassWord>
+            </S.DivInputNewPassWordAndButtons>
+          </div>
+        </form>
+      </S.Container>
+    </>
   );
 };
 

@@ -27,6 +27,7 @@ const CardEdit = ({ id }: ICardEdit) => {
   const {
     register,
     handleSubmit,
+
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(createUserSchema),
@@ -80,11 +81,7 @@ const CardEdit = ({ id }: ICardEdit) => {
   };
 
   const onSubmit = async (data: SetupUser) => {
-    try {
-      await mutation.mutateAsync({ ...data });
-    } catch (error) {
-      console.error("Erro ao atualizar usuário", error);
-    }
+    mutation.mutateAsync({ ...data });
   };
 
   return (

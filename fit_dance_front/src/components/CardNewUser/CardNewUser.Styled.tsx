@@ -1,6 +1,31 @@
 import styled from "styled-components";
 import InputMask from "react-input-mask";
 
+export const DivTitleNewUser = styled.div`
+  width: 79%;
+
+  margin: 0 auto;
+`;
+export const DivNewUser = styled.div`
+  display: flex;
+  justify-content: end;
+  padding: 2% 5% 0 0;
+  width: 39%;
+  height: 30px;
+  background: #a6a5a5;
+`;
+export const DivTextNewUser = styled.div`
+  width: 39%;
+  text-align: center;
+  background: #c2c2c2;
+`;
+export const TextNewUser = styled.h4`
+  padding: 5% 0 0 0;
+  font-family: Montserrat;
+  font-size: 1rem;
+  font-weight: 500;
+`;
+
 export const Container = styled.div`
   width: 79%;
   height: 60vh;
@@ -129,6 +154,8 @@ export const InputDate = styled.input`
   &:focus {
     outline: 2px solid #a8a8a8;
   }
+  div {
+  }
 `;
 
 export const DivInputNewPassWordAndButtons = styled.div`
@@ -146,9 +173,7 @@ export const DivInputNewPassWord = styled.div`
 `;
 
 export const DivPassWord = styled.div`
- 
   width: 100%;
-  
 `;
 
 export const DivButtonSave = styled.div`
