@@ -1,9 +1,11 @@
-<div style='align-items: center; text-align: center;'>
+<div style='display: flex; align-items: center; justify-content: center; text-align: center;'>
   <img src="./image.png" width="350px" alt="Descrição da imagem" style="margin-top: 20px;">
 </div>
 
 
-## 📝TESTE FRONT-END
+
+<h1 align="center" style="margin-top: 50px;">PROJETO FIT DANCE</h1>
+
   
 
 ## 📝Descrição do Projeto
@@ -38,12 +40,12 @@ Este repositório fornece um back-end que deverá ser integrado à sua página. 
 ## 🚀 PARA RODAR A API 👇👇👇
 ``` bash 
 # Entrar na pasta 
-\fit_Dance\teste-frontend>
+\fit_Dance\teste-frontend
 
 # instale o SDKGEN
 npm i @sdkgen/node-runtime
 
-# instale o SDKGEN TYPESCRIPT
+# instale o SDKGEN TYPES
 npm i --save-dev typescript @sdkgen/cli
 
 # instale as denpendências
