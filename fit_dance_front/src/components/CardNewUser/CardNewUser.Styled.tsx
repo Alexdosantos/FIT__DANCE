@@ -3,8 +3,8 @@ import InputMask from "react-input-mask";
 
 export const DivTitleNewUser = styled.div`
   width: 79%;
-
   margin: 0 auto;
+  margin-bottom: -2%;
 `;
 export const DivNewUser = styled.div`
   display: flex;
