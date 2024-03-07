@@ -1,6 +1,7 @@
-<div style='display: flex; align-items: center; justify-content: center; text-align: center; width="100%"'>
+<div style='display: flex; align-items: center; justify-content: center; text-align: center; width: 100%;'>
   <img src="./image.png" width="350px" alt="Descrição da imagem" style="margin-top: 20px;">
 </div>
+
 
 
 
