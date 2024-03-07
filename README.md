@@ -1,6 +1,10 @@
-<div style='display: flex; align-items: center; justify-content: center; text-align: center; width: 100%;'>
-  <img src="./image.png" width="350px" alt="Descrição da imagem" style="margin-top: 20px;">
+<div >
+  <p align="center">
+      <img src="./image.png" width="380px" alt="Descrição da imagem"  style="margin-top: 20px;">
+  </p>
 </div>
+
+
 
 
 
@@ -71,7 +75,7 @@ yarn start
 ## 🚀 Para rodar o Front-End  👇👇👇
 ``` bash 
 # Entre na pasta 
-\fit_Dance\fit_dance_front>
+\fit_Dance\fit_dance_front
 
 # instale as denpendências
 npm  install
