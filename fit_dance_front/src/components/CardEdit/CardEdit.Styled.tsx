@@ -115,8 +115,10 @@ export const InputCPF = styled(InputMask)`
 
 export const DivInputDate = styled.div`
   display: flex;
-  flex-direction: column;
+
+  justify-content: end;
   width: 30%;
+  
 `;
 
 export const LabelDate = styled.label`

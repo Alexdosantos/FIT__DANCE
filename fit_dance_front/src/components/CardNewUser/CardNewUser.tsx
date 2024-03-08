@@ -1,5 +1,6 @@
 import * as S from "./CardNewUser.Styled";
 import ButtonProps from "../ButtonProps/ButtonProps";
+import { ICreateUser } from "../../types/createUserType/createUserType";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ApiClient, SetupUser } from "../../service/api";
@@ -10,10 +11,15 @@ import {
   useMutation,
 } from "@tanstack/react-query";
 import PasswordInput from "../PasswordInput/PasswordInput";
+import InputBirdthDate from "../InputBirthDate/InputBirdthDate";
+import { useState } from "react";
 
 const CardNewUser = () => {
   const apiClient = new ApiClient(import.meta.env.VITE_APP_HOST);
   const queryClient = new QueryClient();
+  const [day, setDay] = useState("");
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
 
   const {
     register,
@@ -32,7 +38,7 @@ const CardNewUser = () => {
       queryClient.invalidateQueries(["users"] as InvalidateQueryFilters);
     },
     onError: async () => {
-      alert("Cadastro não realizado");
+      alert("Cadastro não realizado. PREENCHA TODO OS CAMPOS");
     },
   });
 
@@ -40,8 +46,13 @@ const CardNewUser = () => {
     event.target.value;
   };
 
-  const onSubmit = async (data: SetupUser) => {
-    mutation.mutateAsync(data);
+  const onSubmit = async (data: ICreateUser) => {
+    const newData: SetupUser = {
+      ...data,
+      birthDate: new Date(`${year}-${month}-${day}T00:00:00`),
+    };
+
+    mutation.mutateAsync(newData);
   };
 
   return (
@@ -78,17 +89,14 @@ const CardNewUser = () => {
                 />
               </S.DivInputCPF>
               <S.DivInputDate>
-                <S.TitleErro>{errors.birthDate?.message}</S.TitleErro>
-                <S.LabelDate htmlFor="">Data de Nascimento</S.LabelDate>
-                <S.InputDate type="date" {...register("birthDate")} />
-                {/* <ButtonDate
-                onChangeday={(e) => setDay(e.target.value)}
-                onChangeMonth={(e) => setMonth(e.target.value)}
-                onChanceYear={(e) => setYear(e.target.value)}
-                valueDay={day}
-                valueMonth={month}
-                valueYear={year}
-              /> */}
+                <InputBirdthDate
+                  onChangeday={(e) => setDay(e.target.value)}
+                  onChangeMonth={(e) => setMonth(e.target.value)}
+                  onChanceYear={(e) => setYear(e.target.value)}
+                  valueDay={day}
+                  valueMonth={month}
+                  valueYear={year}
+                />
               </S.DivInputDate>
             </S.DivInputCPFAndDate>
             <S.DivInputNewPassWordAndButtons>

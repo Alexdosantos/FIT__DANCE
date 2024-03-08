@@ -102,8 +102,7 @@ export const InputEmail = styled.input`
 
 export const DivInputCPFAndDate = styled.div`
   display: flex;
-  width: 100%;
-
+  width: 99%;
   justify-content: space-between;
   margin: 2% 0 0 0;
 `;
@@ -134,28 +133,7 @@ export const InputCPF = styled(InputMask)`
 export const DivInputDate = styled.div`
   display: flex;
   justify-content: end;
-
-  flex-direction: column;
   width: 30%;
-`;
-
-export const LabelDate = styled.label`
-  font-family: Montserrat;
-`;
-
-export const InputDate = styled.input`
-  width: 90%;
-  padding: 10px;
-  border: none;
-  border-radius: 2px;
-  font-size: 1rem;
-  font-family: Montserrat;
-
-  &:focus {
-    outline: 2px solid #a8a8a8;
-  }
-  div {
-  }
 `;
 
 export const DivInputNewPassWordAndButtons = styled.div`
