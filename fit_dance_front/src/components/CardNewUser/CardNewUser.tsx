@@ -17,6 +17,7 @@ import { useState } from "react";
 const CardNewUser = () => {
   const apiClient = new ApiClient(import.meta.env.VITE_APP_HOST);
   const queryClient = new QueryClient();
+  
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
@@ -35,16 +36,12 @@ const CardNewUser = () => {
     onSuccess: async () => {
       alert("Cadastro realizado com sucesso!");
       reset();
-      queryClient.invalidateQueries(["users"] as InvalidateQueryFilters);
+      queryClient.invalidateQueries(["getUsers"] as InvalidateQueryFilters);
     },
     onError: async () => {
-      alert("Cadastro não realizado. PREENCHA TODO OS CAMPOS");
+      alert("Cadastro não realizado. PREENCHA TODOS OS CAMPOS");
     },
   });
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.target.value;
-  };
 
   const onSubmit = async (data: ICreateUser) => {
     const newData: SetupUser = {
@@ -83,10 +80,7 @@ const CardNewUser = () => {
               <S.DivInputCPF>
                 <S.TitleErro>{errors.cpf?.message}</S.TitleErro>
                 <S.LabelCPF htmlFor="">CPF</S.LabelCPF>
-                <S.InputCPF
-                  mask="999.999.999-99"
-                  {...register("cpf", { onChange: handleInputChange })}
-                />
+                <S.InputCPF mask="999.999.999-99" {...register("cpf")} />
               </S.DivInputCPF>
               <S.DivInputDate>
                 <InputBirdthDate

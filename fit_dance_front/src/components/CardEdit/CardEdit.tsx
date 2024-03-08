@@ -2,7 +2,12 @@ import * as S from "./CardEdit.Styled";
 import ButtonProps from "../ButtonProps/ButtonProps";
 import { ApiClient, SetupUser } from "../../service/api";
 import { ICreateUser } from "../../types/createUserType/createUserType";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import {
+  useQuery,
+  useMutation,
+  InvalidateQueryFilters,
+  QueryClient,
+} from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { format } from "date-fns";
@@ -17,6 +22,11 @@ interface ICardEdit {
 
 const CardEdit = ({ id }: ICardEdit) => {
   const apiClient = new ApiClient(import.meta.env.VITE_APP_HOST);
+  const queryClient = new QueryClient();
+
+  const [day, setDay] = useState("");
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
 
   const {
     data: usersId,
@@ -37,15 +47,6 @@ const CardEdit = ({ id }: ICardEdit) => {
     defaultValues: usersId,
   });
 
-  const [day, setDay] = useState(
-    usersId?.birthDate ? format(new Date(usersId?.birthDate), "dd") : ""
-  );
-  const [month, setMonth] = useState(
-    usersId?.birthDate ? format(new Date(usersId?.birthDate), "MM") : ""
-  );
-  const [year, setYear] = useState(
-    usersId?.birthDate ? format(new Date(usersId?.birthDate), "yyyy") : ""
-  );
   useEffect(() => {
     if (usersId?.birthDate) {
       setDay(format(new Date(usersId.birthDate), "dd"));
@@ -75,10 +76,11 @@ const CardEdit = ({ id }: ICardEdit) => {
     mutationFn: async (users: SetupUser) =>
       apiClient.updateUser({ id, user: users }),
     onSuccess: () => {
-      alert("Edição não realizado. PREENCHA TODO OS CAMPOS");
+      alert("Usuário edfitado com sucesso!");
+      queryClient.invalidateQueries(["getUsers"] as InvalidateQueryFilters);
     },
     onError: () => {
-      alert("Usuário não atualizado");
+      alert("Edição não realizado. PREENCHA TODOS OS CAMPOS");
     },
   });
 
@@ -94,10 +96,6 @@ const CardEdit = ({ id }: ICardEdit) => {
     if (!isDelete) {
       userDelete.mutateAsync(userId);
     }
-  };
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.target.value;
   };
 
   const onSubmit = async (data: ICreateUser) => {
@@ -160,7 +158,7 @@ const CardEdit = ({ id }: ICardEdit) => {
 
                   <S.InputCPF
                     mask="999.999.999-99"
-                    {...register("cpf", { onChange: handleInputChange })}
+                    {...register("cpf")}
                     defaultValue={usersId?.cpf}
                   />
                 </S.DivInputCPF>

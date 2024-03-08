@@ -14,7 +14,6 @@ function Home() {
   console.log("Estou no selectedUserId", selectedUserId);
 
   const handleCards = (id: number) => {
-    console.log("Estou no handleCards", id);
     setSelectedUserId(id);
     setShowTable(!showTable);
     setShowNewUserCard(false);
