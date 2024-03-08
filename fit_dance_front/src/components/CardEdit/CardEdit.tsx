@@ -76,7 +76,7 @@ const CardEdit = ({ id }: ICardEdit) => {
     mutationFn: async (users: SetupUser) =>
       apiClient.updateUser({ id, user: users }),
     onSuccess: () => {
-      alert("Usuário edfitado com sucesso!");
+      alert("Usuário editado com sucesso!");
       queryClient.invalidateQueries(["getUsers"] as InvalidateQueryFilters);
     },
     onError: () => {
